@@ -1,0 +1,23 @@
+<mat-drawer-container class="container">
+
+    <mat-drawer #drawer  mode="side" closed>
+        <mat-toolbar>
+            <span>Menu</span>
+        </mat-toolbar>
+        <mat-nav-list>
+            <mat-list-item routerLink="/admin/">Home</mat-list-item>
+            <mat-list-item routerLink="/admin/mangas">Controle de Mangas</mat-list-item>
+            <mat-list-item routerLink="/admin/genres">Controle de Generos</mat-list-item>
+            <mat-list-item routerLink="/admin/authors">Controle de Autores</mat-list-item>
+            <mat-list-item routerLink="/admin/publishers">Controle de Publicadora</mat-list-item>
+            <mat-list-item routerLink="/admin/collections">Controle de Coleção</mat-list-item>
+            <mat-list-item routerLink="/admin/users">Controle de Usuarios</mat-list-item>
+            <mat-list-item routerLink="/admin/states">Controle de Estado</mat-list-item>
+            <mat-list-item routerLink="/admin/cities">Controle de Cidades</mat-list-item>
+        </mat-nav-list>
+    </mat-drawer>
+
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,39 @@
+<div class="page-container">
+  <ng-container *ngIf="itens.length > 0; else cartVazio">
+    <div class="cart">
+      <button mat-stroked-button class="clean-cart" color="warn" (click)="removerTudo()">Limpar Carrinho</button>
+      <div class="cart-items-container">
+        <div class="cart-container" *ngFor="let item of itens">
+          <div class="cart-item">
+            <img [src]="item.urlImagem" alt="{{ item.name }}" class="product-image" (click)="lerMais(item.id)">
+            <div class="product-info">
+              <h3>{{ item.name }}</h3>
+              <p><strong>Preço:</strong> {{ item.price | currency:'BRL' }}</p>
+              <div class="quantity-controls">
+                <button mat-icon-button (click)="decreaseQuantity(item)">
+                  <mat-icon>remove</mat-icon>
+                </button>
+                <span>{{ item.quantity }}</span>
+                <button mat-icon-button (click)="increaseQuantity(item)">
+                  <mat-icon>add</mat-icon>
+                </button>
+                <button mat-icon-button class="delete-button" color="warn" (click)="removerItem(item)"><mat-icon>delete</mat-icon></button>
+              </div>
+              <p><strong>Total:</strong> {{ item.quantity * item.price | currency:'BRL' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="cart-summary">
+        <p class="cart-total">Total do Carrinho: {{ calcularTotal() | currency:'BRL' }}</p>
+        <button mat-raised-button class="finish-payment" color="primary" (click)="finalizarCompra()">Finalizar Compra</button>
+        <button mat-raised-button class="continue-buy" color="accent" (click)="continuarComprando()">Continuar comprando</button>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #cartVazio>
+    <div class="empty-cart-message">
+      <p>O Carrinho está vazio.</p>
+    </div>
+  </ng-template>
+</div>

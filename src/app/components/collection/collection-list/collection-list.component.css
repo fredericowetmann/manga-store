@@ -1,0 +1,48 @@
+.toolbar-title {
+  flex: 1;
+  text-align: center;
+}
+
+.mat-linha{
+  height: 100px;
+}
+
+.image{
+  height: 130px;
+  width: 100px;
+  margin-top: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.241);
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.mat-column-id {
+  width: 5em;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-name {
+  min-width: 20%;
+}
+
+.mat-column-description {
+  width: 80%;
+}
+
+.mat-column-action {
+  text-align: center;
+  min-width: 10em;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 83vh;
+  background-color: white;
+}

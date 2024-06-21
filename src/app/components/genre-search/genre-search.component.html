@@ -1,0 +1,32 @@
+<div class="page-container">
+  <h1 class="genre-title">Resultados da busca por: {{ genre?.name }}</h1>
+  <div class="genre-container">
+    <h2>{{ genre?.name }}</h2>
+    <p>{{ genre?.description }}</p>
+    </div>
+  <div class="container responsive-grid">
+      <mat-card class="manga-card" *ngFor="let card of cards()">
+        <img mat-card-image class="product-image" [src]="card.imageName ? card.urlImagem : genericImage" (click)="lerMais(card.idManga)">
+        
+        <mat-card-title class="centered-text">{{ card.title }}</mat-card-title>
+        <br/>
+        <mat-card-content class="centered-text">{{ card.price | currency:'BRL' }}</mat-card-content>
+        
+        <mat-card-actions class="centered-text">
+          <button mat-button color="primary" (click)="lerMais(card.idManga)">Ver mais ...</button>
+        </mat-card-actions>
+        
+        <mat-card-footer>
+          <button mat-flat-button class="carrinho-button" color="accent" (click)="adicionarAoCart(card)">
+            <mat-icon>shopping_cart</mat-icon>Adicionar ao Carrinho
+          </button>
+        </mat-card-footer>
+      </mat-card>
+    </div>
+    <mat-paginator 
+      [pageSizeOptions]="[10, 20, 30, 40, 50, 100]" 
+      [pageSize]="pageSize" 
+      [length]="totalRecords"
+      (page)="paginar($event)">
+  </mat-paginator>
+</div>  

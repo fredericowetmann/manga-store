@@ -1,0 +1,76 @@
+.home-container {
+    text-align: center;
+    padding: 20px;
+}
+
+.hero-section {
+    background: linear-gradient(to right, #6E45E2, #FF6636);
+    color: white;
+    padding: 50px 20px;
+}
+
+.hero-section h1 {
+    font-size: 36px;
+    margin-bottom: 20px;
+}
+
+.hero-section p {
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+
+.hero-section button {
+    background: #FF6636;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.hero-section button:hover {
+    background: #FF5722;
+}
+
+.featured-products h2 {
+    font-size: 24px;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+.product-image:hover{
+    cursor: pointer;
+}
+
+.container {
+    padding: 70px;
+}
+
+.carrinho-button{
+    width: 100%;
+    padding: 16px;
+}
+
+.responsive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.centered-text {
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.page-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 83vh;
+    background-color: white;
+  }

@@ -1,0 +1,64 @@
+.toolbar-title {
+  flex: 1;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.image{
+  height: auto;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.241);
+}
+
+.mat-column-id {
+  width: 5em;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-nome {
+  width: 100%;
+}
+
+.mat-column-publisher,.mat-column-author, .mat-column-volume, .mat-column-numPages, .mat-column-inventory,.mat-column-collection,.mat-column-price{
+  text-align: center;
+}
+
+.mat-column-action {
+  text-align: center;
+  min-width: 10em;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 83vh;
+  background-color: white;
+}
+
+.genre-dialog{
+  h3{
+    text-align: center;
+  }
+  li{
+    list-style-type:none
+  }
+}
+
+.description-dialog{
+  margin-right: 30px;
+  margin-bottom: 30px;
+  height: fit-content;
+  h3{
+    text-align: center;
+  }
+  li{
+    list-style-type:none;
+    text-align: justify;
+  }
+}

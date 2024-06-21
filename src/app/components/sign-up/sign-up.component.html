@@ -1,0 +1,35 @@
+<div class="page-container">
+    <div class="login-container">
+        <div class="login-box">
+            <h2 class="login-title">Cadastrar</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="onRegister()">
+                <mat-form-field class="login-input">
+                    <input matInput placeholder="Nome" formControlName="name" required>
+                    <mat-error *ngIf="loginForm.get('name')!.hasError('required')">O nome é obrigatório</mat-error>
+                </mat-form-field>
+                <mat-form-field class="login-input">
+                    <input matInput placeholder="Email" formControlName="email" required>
+                    <mat-error *ngIf="loginForm.get('email')!.hasError('required')">O email é obrigatório</mat-error>
+                    <mat-error *ngIf="loginForm.get('email')!.hasError('email')">O email deve ser valido</mat-error>
+                </mat-form-field>
+                <mat-form-field class="login-input">
+                    <input matInput [type]="senhaVisivel ? 'text' : 'password'" formControlName="password" autocomplete="off" placeholder="Senha">
+                    <button mat-icon-button matSuffix type="button" (click)="toggleSenhaVisivel()">
+                        <mat-icon>{{ senhaVisivel ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm.get('password')!.hasError('required')">A senha é obrigatória</mat-error>
+                    <mat-error *ngIf="loginForm.get('password')!.hasError('minlength')">A senha deve possuir pelo menos 3 caracteres</mat-error>
+                </mat-form-field>
+                <mat-form-field class="login-input">
+                    <input matInput [type]="confirmPassword ? 'text' : 'password'" formControlName="confirmPassword" autocomplete="off" placeholder="Confirmar Senha">
+                    <button mat-icon-button matSuffix type="button" (click)="toggleSenhaVisivel2()">
+                        <mat-icon>{{ confirmPassword ? 'visibility_off' : 'visibility' }}</mat-icon>
+                    </button>
+                    <mat-error *ngIf="loginForm.get('confirmPassword')!.hasError('required')">A confirmação de senha é obrigatória</mat-error>
+                </mat-form-field>
+                
+                <button mat-raised-button class="login-button" color="primary" type="submit">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+</div>

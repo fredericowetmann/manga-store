@@ -1,0 +1,237 @@
+<div class="page-container">
+    <mat-toolbar color="#fff">
+        <span class="toolbar-title">Cadastro de Mangas</span>
+    </mat-toolbar>
+    <div class="form-container">
+        <mat-card>
+            <mat-card-content>
+                <form [formGroup]="formGroup">
+                    <mat-form-field appearance="fill" class="full-width-input">
+                        <mat-label>Name</mat-label>
+                        <input matInput type="text" formControlName="name" #inputName />
+                        <mat-error *ngIf="formGroup.get('name')?.hasError('apiError')">
+                            {{ formGroup.get('name')?.getError('apiError') }}
+                        </mat-error>
+                    </mat-form-field>
+                    <!--begin description-->
+                    <mat-form-field appearance="fill" class="full-width-input">
+                        <mat-label>Descrição</mat-label>
+                        <textarea matInput type="text" formControlName="description">
+                        <mat-error *ngIf="formGroup.get('description')?.errors && 
+                                        formGroup.get('description')?.touched">
+                        </mat-error>
+                        </textarea>
+                    </mat-form-field>
+                    <!--end description-->
+                    <!--begin price-->
+                    <mat-form-field appearance="fill" class="full-width-input">
+                        <mat-label>Preço</mat-label>
+                        <input matInput type="text" formControlName="price" #inputPrice>
+                        <mat-error *ngIf="formGroup.get('price')?.errors && 
+                                        formGroup.get('price')?.touched">
+                        
+                            @if (formGroup.get('price')?.errors?.['required']) {
+                                <span>O preço deve ser informado.</span>
+                            }
+                            @if (formGroup.get('price')?.errors?.['min']) {
+                                <span>O preço deve ser positivo.</span>
+                            }
+                            @if (formGroup.get('price')?.errors?.['pattern']) {
+                                <span>O preço deve ser valido(use ponto).</span>
+                            }  
+                            @if (formGroup.get('price')?.hasError('apiError')) {
+                                <span>{{ formGroup.get('price')?.getError('apiError') }}</span>
+                            }
+                        </mat-error>
+                    </mat-form-field>
+                    <!--end price-->
+                    <!--begin inventory-->
+                    <mat-form-field appearance="fill" class="full-width-input">
+                        <mat-label>Estoque</mat-label>
+                        <input matInput type="text" formControlName="inventory">
+                        <mat-error *ngIf="formGroup.get('inventory')?.errors && 
+                                        formGroup.get('inventory')?.touched">
+                            @if (formGroup.get('inventory')?.errors?.['required']) {
+                                <span>O Estoque deve ser informado.</span>
+                            } 
+                            @if (formGroup.get('inventory')?.errors?.['min']) {
+                                <span>O Estoque deve ser positivo.</span>
+                            } 
+                            @if (formGroup.get('inventory')?.errors?.['pattern']) {
+                                <span>O Estoque deve ser um numero.</span>
+                            } 
+
+                            @if (formGroup.get('inventory')?.hasError('apiError')) {
+                                <span>{{ formGroup.get('inventory')?.getError('apiError') }}</span>
+                            }
+                        </mat-error>
+                    </mat-form-field>
+                    <!--end inventory-->
+                    <!--begin numPages-->
+                    <mat-form-field appearance="fill" class="full-width-input">
+                        <mat-label>Numero de Paginas</mat-label>
+                        <input matInput type="text" formControlName="numPages">
+                        <mat-error *ngIf="formGroup.get('numPages')?.errors && 
+                                        formGroup.get('numPages')?.touched">
+                            @if (formGroup.get('numPages')?.errors?.['required']) {
+                                <span>O Numero de paginas deve ser informado.</span>
+                            } 
+                            @if (formGroup.get('numPages')?.errors?.['min']) {
+                                <span>O Numero de paginas deve ser positivo.</span>
+                            } 
+                            @if (formGroup.get('numPages')?.errors?.['pattern']) {
+                                <span>O Numero de paginas deve ser um....NUMERO.</span>
+                            } 
+
+                            @if (formGroup.get('numPages')?.hasError('apiError')) {
+                                <span>{{ formGroup.get('numPages')?.getError('apiError') }}</span>
+                            }
+                        </mat-error>
+                    </mat-form-field>
+                    <!--end numPages-->
+                    <!--begin volume-->
+                    <mat-form-field appearance="fill" class="full-width-input">
+                        <mat-label>Volume</mat-label>
+                        <input matInput type="text" formControlName="volume">
+                        <mat-error *ngIf="formGroup.get('volume')?.errors && 
+                                        formGroup.get('volume')?.touched">
+                            @if (formGroup.get('volume')?.errors?.['required']) {
+                                <span>O volume deve ser informado.</span>
+                            } 
+                            @if (formGroup.get('volume')?.errors?.['min']) {
+                                <span>O numero do volume deve ser positivo.</span>
+                            } 
+                            @if (formGroup.get('volume')?.errors?.['pattern']) {
+                                <span>O numero do volume deve ser um numero.</span>
+                            } 
+
+                            @if (formGroup.get('volume')?.hasError('apiError')) {
+                                <span>{{ formGroup.get('volume')?.getError('apiError') }}</span>
+                            }
+                        </mat-error>
+                    </mat-form-field>
+                    <!--end volume-->
+                    <!--begin collection-->
+                    <mat-form-field appearance="fill">
+                        <mat-label>Coleção</mat-label>
+                        <mat-select formControlName="collection">
+                            @for (collection of collection; track collection.id) {
+                                <mat-option [value]="collection">
+                                    {{collection.name}}
+                                </mat-option>
+                            }
+                        </mat-select>
+                        <mat-error *ngIf="formGroup.get('collection')?.errors && 
+                                        formGroup.get('collection')?.touched">
+                            @if (formGroup.get('collection')?.errors?.['required']) {
+                                <span>A coleção deve ser informado.</span>
+                            } 
+
+                            @if (formGroup.get('collection')?.hasError('apiError')) {
+                                <span>{{ formGroup.get('collection')?.getError('apiError') }}</span>
+                            }
+                        </mat-error>                    
+                    </mat-form-field>
+                    <!--end collection-->
+                    <!--begin publisher-->
+                    <mat-form-field appearance="fill">
+                        <mat-label>Publicadora</mat-label>
+                        <mat-select formControlName="publisher">
+                            @for (publisher of publisher; track publisher.id) {
+                                <mat-option [value]="publisher">
+                                    {{publisher.name}}
+                                </mat-option>
+                            }
+                        </mat-select>
+                        <mat-error *ngIf="formGroup.get('publisher')?.errors && 
+                                        formGroup.get('publisher')?.touched">
+                            @if (formGroup.get('publisher')?.errors?.['required']) {
+                                <span>A Publicadora deve ser informado.</span>
+                            } 
+
+                            @if (formGroup.get('publisher')?.hasError('apiError')) {
+                                <span>{{ formGroup.get('publisher')?.getError('apiError') }}</span>
+                            }
+                        </mat-error>                       
+                    </mat-form-field>
+                    <!--end publisher-->
+                    <!--begin author-->
+                    <mat-form-field appearance="fill">
+                        <mat-label>Autor</mat-label>
+                        <mat-select formControlName="author">
+                            @for (author of author; track author.id) {
+                                <mat-option [value]="author">
+                                    {{author.name}}
+                                </mat-option>
+                            }
+                        </mat-select>
+                        <mat-error *ngIf="formGroup.get('author')?.errors && 
+                                        formGroup.get('author')?.touched">
+                            @if (formGroup.get('author')?.errors?.['required']) {
+                                <span>Autor deve ser informado.</span>
+                            } 
+
+                            @if (formGroup.get('author')?.hasError('apiError')) {
+                                <span>{{ formGroup.get('author')?.getError('apiError') }}</span>
+                            }
+                        </mat-error>                    
+                    </mat-form-field>
+                    <!--end author-->
+                    <mat-form-field>
+                    <mat-label>Gêneros</mat-label>
+                <mat-select formControlName="listGenre" name="listGenre" multiple >
+                <mat-option *ngFor="let genre of listGenre" [value]="genre.id">
+                    {{genre.name}}
+                </mat-option>
+                </mat-select>
+                <mat-error *ngIf="formGroup.get('listGenre')?.errors && 
+                                    formGroup.get('listGenre')?.touched">
+                    @if (formGroup.get('listGenre')?.errors?.['required']) {
+                        <span>Ao menos um(1) gênero deve ser informado deve ser informado.</span>
+                    } 
+
+                    @if (formGroup.get('listGenre')?.hasError('apiError')) {
+                        <span>{{ formGroup.get('listGenre')?.getError('apiError') }}</span>
+                    }
+                </mat-error>                
+            </mat-form-field>
+            <mat-form-field appearance="outline" class="full-width-input">
+                <mat-label>Imagem do Manga</mat-label>
+                <input type="file" (change)="carregarImagemSelecionada($event)" hidden #fileInput>
+                <input matInput [value]="fileName" readonly>
+                
+                <button mat-icon-button matSuffix (click)="fileInput.click()">
+                    <mat-icon>folder_open</mat-icon>
+                </button>   
+            </mat-form-field>
+
+            <div *ngIf="imagePreview" class="container responsive-grid">
+                <mat-card>       
+                    <img mat-card-image [src]="imagePreview" >
+                </mat-card>
+            </div>
+                </form>
+                </mat-card-content>
+                <mat-card-actions>
+                    <button mat-raised-button 
+                        color="primary" 
+                        (click)="salvar()">
+                        <!-- [disabled]="formGroup.invalid">  -->
+                    Salvar 
+                </button>
+                <button mat-raised-button 
+                        *ngIf="formGroup?.get('id')?.value"
+                        color="warn" 
+                        (click)="excluir()"
+                        [disabled]="formGroup.invalid"> 
+                    Excluir 
+                </button>
+                <button mat-raised-button  
+                        routerLink="/admin/mangas"> 
+                    Cancelar 
+                </button>
+
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,30 @@
+<div class="page-container">
+<!-- Conteúdo da página -->
+    <h1>Resultados da busca por: '{{ name }}'</h1>
+    <div *ngIf="cards().length === 0" class="no-results-message">
+        Nenhum mangá encontrado
+    </div>
+    <div class="container responsive-grid" *ngIf="cards().length > 0">
+        <mat-card class="manga-card" *ngFor="let card of cards()">
+        <img mat-card-image class="product-image" [src]="card.imageName ? card.urlImagem : genericImage" (click)="lerMais(card.idManga)">
+        <mat-card-title class="centered-text"> {{card.title}} </mat-card-title>
+        <br/>
+        <mat-card-content class="centered-text"> {{ card.price | currency:'BRL' }} </mat-card-content>
+        <mat-card-actions class="centered-text">
+            <button mat-button color="primary" (click)="lerMais(card.idManga)">Ver mais ...</button>
+        </mat-card-actions>
+        <mat-card-footer>
+            <button mat-flat-button class="carrinho-button" color="accent" (click)="adicionarAoCart(card)">
+            <mat-icon>shopping_cart</mat-icon>Adicionar ao Carrinho
+            </button>
+        </mat-card-footer>
+        </mat-card>
+    </div>
+    <mat-paginator 
+        [pageSizeOptions]="[10, 20, 30, 40, 50, 100]" 
+        [pageSize]="pageSize" 
+        [length]="totalRecords"
+        (page)="paginar($event)">
+    </mat-paginator>
+</div>
+  

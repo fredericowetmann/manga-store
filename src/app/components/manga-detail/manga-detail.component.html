@@ -1,0 +1,28 @@
+<div class="page-container">
+    <div class="product-container">
+        <div class="product-image">
+            <img [src]="manga.imageName ? getImageUrl(manga?.imageName) : genericImage" alt="{{ manga?.name }} Cover">
+        </div>
+        <div class="product-info">
+            <h3>{{ manga?.name }}</h3>
+            <p class="description">{{ manga?.description }}</p>
+            <p class="price">{{ manga?.price | currency:'BRL' }}</p>
+            <button class="add-to-cart" (click)="adicionarAoCart(manga)"><mat-icon>shopping_cart</mat-icon>Adicionar ao carrinho</button>
+        </div>
+    </div>
+    <div class="additional-info">
+        <p><strong>Generos: </strong> 
+            <span *ngFor="let genre of manga?.listGenre; let last = last">
+                <button mat-button mat-stroked-button class="button" (click)="searchGenre(genre.id)">{{ genre.name }}</button><span *ngIf="!last">, </span>
+            </span>
+        </p>
+        <p><strong>Numero de Paginas:</strong> {{ manga?.numPages }}</p>
+        <p><strong>Volume:</strong> {{ manga?.volume }}</p>
+        <p><strong>Coleção:</strong> <button mat-button mat-stroked-button class="button" (click)="searchCollection(manga?.collection.id)">{{ manga?.collection.name }}</button></p>
+        <p><strong>Autor:</strong> {{ manga?.author.name }}</p>
+        <p><strong>Publicadora:</strong> {{ manga?.publisher.name }}</p>
+    </div>
+    <div class="upcoming-mangas">
+        <!-- Conteúdo dos próximos mangás -->
+    </div>
+</div>

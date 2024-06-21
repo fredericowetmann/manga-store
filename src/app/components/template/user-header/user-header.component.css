@@ -1,0 +1,243 @@
+.main-content {
+  margin-top: 80px;
+}
+
+.demo-section + .demo-section {
+  margin-top: 16px;
+}
+
+.demo-section {
+  margin-right: 20px;
+}
+
+.logo {
+  height: 8vh;
+  cursor: pointer;
+}
+
+/* Estilos do formulário de pesquisa */
+.search-form {
+  display: flex;
+  align-items: center;
+}
+
+.input-wrapper {
+  position: relative;
+}
+
+.search-input {
+  width: 35vw;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  transition: border-color 0.3s;
+}
+
+.search-input:focus {
+  border-color: #e8e7e7;
+}
+
+.clear-button {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  color: #999;
+  outline: none;
+}
+
+.clear-button:hover {
+  color: #333;
+}
+
+.search-button {
+  padding: 5px 10px;
+  border: none;
+  background-color: #fff;
+  color: black;
+  border-radius: 0 4px 4px 0;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search-button:hover {
+  background-color: #eaeaea;
+}
+
+.login-container {
+  position: relative;
+}
+
+.login-options {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgb(84, 108, 143);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 17px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 150px;
+  height: 80px;
+  z-index: 999;
+}
+
+.login-options button {
+  display: flex;
+  align-items: center;
+}
+
+.login-options mat-icon {
+  margin-right: 20px;
+}
+
+mat-toolbar {
+  display: flex; /* Make the toolbar a flex container */
+  justify-content: space-between; /* Align elements horizontally */
+  align-items: center; /* Align elements vertically */
+  padding-left: 30px;
+  padding-right: 50px;
+  top: 0;
+  z-index: 9999;
+  background-color: #7304FF;
+}
+
+.toolbar-left,
+.toolbar-center,
+.toolbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.toolbar-left {
+  flex: 1;
+}
+
+.toolbar-center {
+  flex: 2;
+  justify-content: center;
+}
+
+.toolbar-right {
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.example-spacer {
+  flex: 1 1 auto; /* Maintains spacing between elements */
+}
+
+.login-container {
+  margin-left: 10px;
+  display: flex; /* Make the login container a flex container */
+  align-items: center; /* Vertically align profile picture and username */
+}
+
+.profile-image {
+  border-radius: 50%;
+  width: 40px; /* Adjust width as needed */
+  height: 40px; /* Adjust height as needed */
+  overflow: hidden; /* Prevent image from overflowing the circular frame */
+  margin-left: 10px; /* Add margin to the right for spacing */
+  border-color: black;
+}
+
+.profile-name {
+  text-align: left; /* Align username to the left */
+}
+
+.cart-dropdown {
+  position: relative;
+}
+
+.cart-content {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  color: black;
+  background: white;
+  border: 1px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  max-height: 55vh;
+  min-height: 15vh;
+  min-width: 25vh;
+  overflow-y: auto;
+  z-index: 1000;
+}
+
+.cart-item {
+  display: flex;
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  height: 12vh;
+  margin-top: 10px;
+  max-width: 25vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.item-image {
+  width: 4vw;
+  height: 10vh;
+  margin-right: 20px;
+  cursor: pointer;
+}
+
+.item-details {
+  flex: 1;
+} 
+
+.item-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.item-quantity {
+  display: flex;
+  align-items: center;
+}
+
+.item-quantity span {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.item-total-price {
+  margin-left: 10px;
+}
+
+.remove-item {
+  margin-left: 10px;
+}
+
+.cart-total {
+  height: 6vh;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  position: sticky;
+  bottom: 0;
+}
+
+.cart-total button {
+  margin-top: 5px;
+  width: 11vw;
+  margin-left: 10px;
+  background-color: #ff4081;
+}
+
+.cart-total span {
+  margin-top: 5px;
+  color: #31c653;
+}

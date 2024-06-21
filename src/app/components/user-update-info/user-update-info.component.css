@@ -1,0 +1,116 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  .main-container {
+    display: flex;
+    min-height: 83vh;
+    padding: 20px;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: f5f5f5;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    position: sticky; /* Define a posição como sticky */
+    top: 20px; /* Define a distância do topo */
+    height: fit-content; /* Ajusta a altura ao conteúdo */
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-links li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-links a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    background-color: rgb(146, 57, 255);
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar-links a:hover {
+    background-color: rgb(100, 0, 222);
+    cursor: pointer;
+  }
+
+  .mat-icon{
+    margin-right: 10px;
+    margin-bottom: -5px;
+  }
+  
+  .content-container {
+    display: flex; /* Make the content container a flex container */
+    flex-grow: 1; /* Allow content container to fill remaining space */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+    max-height: fit-content;
+  }
+
+  .toolbar-title {
+    flex: 1;
+    text-align: center;
+  }
+
+  .full-width-input {
+      width: 100%;
+      margin-bottom: 20px;
+  }
+
+  mat-card {
+      max-width: 800px;
+      margin: 2rem auto;
+      margin-left: -50px;
+  }
+
+  mat-card-actions {
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  .form-container {
+      padding: 2rem; 
+  }
+
+  button[mat-raised-button] {
+      width: 120px;
+  }
+
+  button[mat-raised-button]:not(:last-child) {
+      margin-right: 1rem;
+  }
+
+  .image-preview{
+    height: 40vh;
+    width: 30vw;
+  }
+
+  .address{
+    margin-bottom: 30px;
+  }

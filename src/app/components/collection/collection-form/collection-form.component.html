@@ -1,0 +1,75 @@
+<div class="page-container">
+    <mat-toolbar color="#fff">
+        <span class="toolbar-title">Cadastro de Coleção</span>
+    </mat-toolbar>
+    <div class="form-container">
+        <mat-card>
+            <mat-card-content>
+                <form [formGroup]="formGroup">
+                    <mat-form-field appearance="fill" class="full-width-input">
+                        <mat-label>Nome</mat-label>
+                        <input matInput type="text" formControlName="name">
+                        <mat-error *ngIf="formGroup.get('name')?.errors && 
+                                        formGroup.get('name')?.touched">
+                            @if (formGroup.get('name')?.errors?.['required']) {
+                                <span>O nome deve ser informado.</span>
+                            } 
+                            @if (formGroup.get('name')?.errors?.['minlength']) {
+                                <span>O nome deve possuir ao menos 1 caractere.</span>
+                            }
+                            @if (formGroup.get('name')?.hasError('apiError')) {
+                                <span>{{ formGroup.get('name')?.getError('apiError') }}</span>
+                            }
+                        </mat-error>
+                    </mat-form-field>
+                    <!--begin description-->
+                    <mat-form-field appearance="fill" class="full-width-input">
+                        <mat-label>Descrição</mat-label>
+                        <textarea matInput type="text" formControlName="description">
+                        <mat-error *ngIf="formGroup.get('description')?.errors && 
+                                        formGroup.get('description')?.touched">
+                            @if (formGroup.get('description')?.hasError('apiError')) {
+                                <span>{{ formGroup.get('description')?.getError('apiError') }}</span>
+                            }
+                        </mat-error>
+                        </textarea>
+                    </mat-form-field>
+                    <!--end description-->
+                    <mat-form-field appearance="outline" class="full-width-input">
+                        <mat-label>Imagem da Coleção</mat-label>
+                        <input type="file" (change)="carregarImagemSelecionada($event)" hidden #fileInput>
+                        <input matInput [value]="fileName" readonly>
+                        
+                        <button mat-icon-button matSuffix (click)="fileInput.click()">
+                            <mat-icon>folder_open</mat-icon>
+                        </button>   
+                    </mat-form-field>
+        
+                    <div *ngIf="imagePreview" class="container responsive-grid">       
+                            <img mat-card-image [src]="imagePreview" >
+                    </div>
+                </form>
+            </mat-card-content>
+            <mat-card-actions>
+                <button mat-raised-button 
+                        color="primary" 
+                        (click)="salvar()">
+                        <!-- [disabled]="formGroup.invalid">  -->
+                    Salvar 
+                </button>
+                <button mat-raised-button 
+                        *ngIf="formGroup?.get('id')?.value"
+                        color="warn" 
+                        (click)="excluir()"
+                        [disabled]="formGroup.invalid"> 
+                    Excluir 
+                </button>
+                <button mat-raised-button  
+                        routerLink="/admin/collections"> 
+                    Cancelar 
+                </button>
+
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

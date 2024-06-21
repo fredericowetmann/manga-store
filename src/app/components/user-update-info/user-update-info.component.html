@@ -1,0 +1,183 @@
+<div class="main-container">
+    <div class="sidebar">
+        <ul class="sidebar-links">
+          <li><a (click)="navegation('')"><mat-icon><span class="material-symbols-outlined">
+              person
+              </span></mat-icon>Minha conta</a></li>
+          <li><a (click)="navegation('orders')"><mat-icon><span class="material-symbols-outlined">
+              list_alt
+              </span></mat-icon>Meus pedidos</a></li>
+          <li><a (click)="navegation('update')"><mat-icon><span class="material-symbols-outlined">
+              edit
+              </span></mat-icon>Alterar informações</a></li>
+          <li><a (click)="navegation('senha')"><mat-icon><span class="material-symbols-outlined">
+              password
+              </span></mat-icon>Alterar senha</a></li>
+        </ul>
+      </div>
+  
+  <div class="content-container">
+    <h2>Alterar informações</h2>
+    <div class="form-container">
+      <mat-card>
+          <mat-card-content>
+              <form [formGroup]="formGroup">
+                  <mat-form-field appearance="fill" class="full-width-input">
+                      <mat-label>Nome</mat-label>
+                      <input matInput type="text" formControlName="name">
+                      <mat-error *ngIf="formGroup.get('name')?.errors && 
+                                      formGroup.get('name')?.touched">
+                          @if (formGroup.get('name')?.errors?.['required']) {
+                              <span>O nome deve ser informado.</span>
+                          } 
+                          @if (formGroup.get('name')?.errors?.['minlength']) {
+                              <span>O nome deve possuir ao menos 3 caracteres.</span>
+                          }
+                          @if (formGroup.get('name')?.hasError('apiError')) {
+                              <span>{{ formGroup.get('name')?.getError('apiError') }}</span>
+                          }
+                      </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" class="full-width-input">
+                      <mat-label>Email</mat-label>
+                      <input matInput type="text" formControlName="email">
+                      <mat-error *ngIf="formGroup.get('email')?.errors && 
+                                      formGroup.get('email')?.touched">
+                          @if (formGroup.get('email')?.hasError('apiError')) {
+                              <span>{{ formGroup.get('email')?.getError('apiError') }}</span>
+                          }
+                          @if (formGroup.get('email')?.errors?.['required']) {
+                              <span>O email deve ser informado.</span>
+                          } 
+                          @if (formGroup.get('email')?.errors?.['email']) {
+                              <span>O email deve ser valido.</span>
+                          }
+                      </mat-error>
+                  </mat-form-field>
+                  <mat-form-field appearance="fill" class="full-width-input">
+                      <mat-label>Cpf</mat-label>
+                      <input matInput type="text" formControlName="cpf">
+                      <mat-error *ngIf="formGroup.get('cpf')?.errors && 
+                                      formGroup.get('cpf')?.touched">
+                          @if (formGroup.get('cpf')?.hasError('apiError')) {
+                              <span>{{ formGroup.get('cpf')?.getError('apiError') }}</span>
+                          }
+                          @if (formGroup.get('cpf')?.errors?.['required']) {
+                              <span>O cpf deve ser informado.</span>
+                          } 
+                          @if (formGroup.get('cpf')?.errors?.['minlength']) {
+                              <span>O cpf deve possuir 11 caracteres.</span>
+                          }
+                          @if (formGroup.get('cpf')?.errors?.['maxlength']) {
+                            <span>O cpf deve possuir 11 caracteres.</span>
+                        }
+                      </mat-error>
+                  </mat-form-field>
+                <mat-form-field appearance="outline" class="full-width-input">
+                    <mat-label>Imagem de Usuario</mat-label>
+                    <input type="file" (change)="carregarImagemSelecionada($event)" hidden #fileInput>
+                    <input matInput [value]="fileName" readonly>
+                    
+                    <button mat-icon-button matSuffix (click)="fileInput.click()">
+                        <mat-icon>folder_open</mat-icon>
+                    </button>   
+                </mat-form-field>
+    
+                <div *ngIf="imagePreview"> 
+                        <img class="image-preview" [src]="imagePreview" >
+                </div>
+                <h2 class="address">Endereço</h2>
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label>Nome</mat-label>
+                    <input matInput type="text" formControlName="addressName">
+                    <mat-error *ngIf="formGroup.get('addressName')?.errors && 
+                                    formGroup.get('addressName')?.touched">
+                        @if (formGroup.get('addressName')?.errors?.['required']) {
+                            <span>O nome do endereço deve ser informado.</span>
+                        }
+                        @if (formGroup.get('addressName')?.hasError('apiError')) {
+                            <span>{{ formGroup.get('addressName')?.getError('apiError') }}</span>
+                        }
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label>CEP</mat-label>
+                    <input matInput type="text" formControlName="addressPostalCode">
+                    <mat-error *ngIf="formGroup.get('addressPostalCode')?.errors && 
+                                    formGroup.get('addressPostalCode')?.touched">
+                        @if (formGroup.get('addressPostalCode')?.errors?.['required']) {
+                            <span>O Cep deve ser informado.</span>
+                        }
+                        @if (formGroup.get('addressPostalCode')?.hasError('apiError')) {
+                            <span>{{ formGroup.get('addressPostalCode')?.getError('apiError') }}</span>
+                        }
+                        @if (formGroup.get('addressPostalCode')?.errors?.['minlength']) {
+                            <span>O Cep deve possuir exatamente 8 caracteres.</span>
+                        }
+                        @if (formGroup.get('addressPostalCode')?.errors?.['maxlength']) {
+                            <span>O Cep deve possuir exatamente 8 caracteres.</span>
+                        }
+                        @if (formGroup.get('addressPostalCode')?.errors?.['pattern']) {
+                            <span>O Cep deve ser numero valido.</span>
+                        }
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label>Endereço</mat-label>
+                    <input matInput type="text" formControlName="addressAddress">
+                    <mat-error *ngIf="formGroup.get('addressAddress')?.errors && 
+                                    formGroup.get('addressAddress')?.touched">
+                        @if (formGroup.get('addressAddress')?.errors?.['required']) {
+                            <span>O endereço deve ser informado.</span>
+                        }
+                        @if (formGroup.get('addressAddress')?.hasError('apiError')) {
+                            <span>{{ formGroup.get('addressAddress')?.getError('apiError') }}</span>
+                        }
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill" class="full-width-input">
+                    <mat-label>Complemento</mat-label>
+                    <input matInput type="text" formControlName="addressComplement">
+                    <mat-error *ngIf="formGroup.get('addressComplement')?.errors && 
+                                    formGroup.get('addressComplement')?.touched">
+                        @if (formGroup.get('addressComplement')?.errors?.['required']) {
+                            <span>O complemento deve ser informado.</span>
+                        }
+                        @if (formGroup.get('addressComplement')?.hasError('apiError')) {
+                            <span>{{ formGroup.get('addressComplement')?.getError('apiError') }}</span>
+                        }
+                    </mat-error>
+                </mat-form-field>
+                <mat-form-field appearance="fill">
+                    <mat-label>Cidade</mat-label>
+                    <mat-select formControlName="addressCity">
+                        @for (addressCity of city; track addressCity.id) {
+                            <mat-option [value]="addressCity">
+                                {{addressCity.name}}, {{addressCity.state.acronym}}
+                            </mat-option>
+                        }
+                    </mat-select>
+                    <mat-error *ngIf="formGroup.get('addressCity')?.errors && 
+                                    formGroup.get('addressCity')?.touched">
+                        @if (formGroup.get('addressCity')?.errors?.['required']) {
+                            <span>A cidade deve ser informada.</span>
+                        }
+                        @if (formGroup.get('addressCity')?.hasError('apiError')) {
+                            <span>{{ formGroup.get('addressCity')?.getError('apiError') }}</span>
+                        }
+                    </mat-error>                    
+                </mat-form-field>
+              </form>
+          </mat-card-content>
+          <mat-card-actions>
+              <button mat-raised-button 
+                      color="primary" 
+                      (click)="salvar()"
+                      [disabled]="formGroup.invalid">
+                  Salvar 
+              </button>
+          </mat-card-actions>
+      </mat-card>
+  </div>
+  </div>
+</div>

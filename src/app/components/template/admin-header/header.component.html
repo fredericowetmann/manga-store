@@ -1,0 +1,74 @@
+<mat-toolbar color="primary">
+        <button (click)="clickMenu()" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+            <mat-icon>menu</mat-icon>
+        </button>
+        <div class="toolbar-left">
+          <img class="logo" [src]="logo" routerLink="/admin/">
+        </div>
+      
+        <div class="toolbar-center">
+          <form class="search-form" (ngSubmit)="onSubmit()">
+            <div class="input-wrapper">
+              <input class="search-input" type="text" [(ngModel)]="searchQuery" name="searchQuery" placeholder="Buscar Mangás" />
+              <button *ngIf="searchQuery" class="clear-button" type="button" (click)="clearSearch()">✕</button>
+            </div>
+            <button class="search-button" type="submit"><mat-icon>search</mat-icon></button>
+          </form>
+        </div>
+      
+        <div class="toolbar-right">
+          <div class="cart-dropdown">
+            <button mat-icon-button class="demo-section example-icon favorite-icon" aria-label="Example icon-button with shopping cart icon" (click)="toggleCart()">
+              <mat-icon [matBadge]="qtdItensCart" matBadgeColor="warn" matBadgePosition="after" matBadgeOverlap="false">shopping_cart</mat-icon>
+            </button>
+            <div *ngIf="showCart" class="cart-content">
+              <ng-container *ngIf="cartItems.length > 0; else emptyCart">
+                <div class="cart-item" *ngFor="let item of cartItems">
+                  <img [src]="item.urlImagem" alt="{{ item.name }}" class="item-image" [routerLink]="['/admin/manga/', item.id]">
+                  <div class="item-details">
+                    <span class="item-name">{{ item.name }}</span>
+                    <div class="item-actions">
+                      <div class="item-quantity">
+                        <button mat-icon-button (click)="decreaseQuantity(item)"><mat-icon>remove</mat-icon></button>
+                        <span>{{ item.quantity }}</span>
+                        <button mat-icon-button (click)="increaseQuantity(item)"><mat-icon>add</mat-icon></button>
+                      </div>
+                      <button mat-icon-button class="remove-item" (click)="removeItem(item)"><mat-icon color="warn">delete</mat-icon></button>
+                      <span class="item-total-price">{{ item.quantity * item.price | currency:'BRL' }}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class="cart-total">
+                  <button mat-button (click)="goToCart()">Ir para o Carrinho</button>
+                  <span>Total: {{ totalPrice | currency:'BRL' }}</span>
+                </div>
+              </ng-container>
+              <ng-template class="empty-cart" #emptyCart>
+                <span>Seu carrinho está vazio.</span>
+              </ng-template>
+            </div>
+          </div>
+      
+          <div class="login-container" (mouseenter)="showLoginOptions = true" (mouseleave)="showLoginOptions = false">
+            <ng-container *ngIf="usuarioLogado; else loginButton">
+              <span class="profile-name">{{usuarioLogado.name}}</span>
+              <img [src]="usuarioLogado.imageName ? getImageUrl(usuarioLogado.id) : genericImage" alt="User Profile Picture" class="profile-image">
+              <div *ngIf="showLoginOptions" class="login-options">
+                <button mat-button (click)="dashboard()">
+                  <mat-icon>account_box</mat-icon>
+                  Meus Dados
+                </button>
+                <button mat-button (click)="deslogar()">
+                  <mat-icon>exit_to_app</mat-icon>
+                  Sair
+                </button>
+              </div>
+            </ng-container>
+            <ng-template #loginButton>
+              <button mat-button routerLink="/login">
+                Entrar
+              </button>
+            </ng-template>
+          </div>
+        </div>
+</mat-toolbar>

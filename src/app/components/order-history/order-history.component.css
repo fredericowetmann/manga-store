@@ -1,0 +1,111 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+  }
+  
+  .main-container {
+    display: flex;
+    height: fit-content;
+    padding: 20px;
+    min-height: 83vh;
+  }
+  
+  .sidebar {
+    width: 250px;
+    background-color: f5f5f5;
+    color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+    position: sticky; /* Define a posição como sticky */
+    top: 20px; /* Define a distância do topo */
+    height: fit-content; /* Ajusta a altura ao conteúdo */
+  }
+  
+  .sidebar h2 {
+    margin-bottom: 20px;
+  }
+  
+  .sidebar-links {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .sidebar-links li {
+    margin-bottom: 10px;
+  }
+  
+  .sidebar-links a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    background-color: rgb(146, 57, 255);
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .sidebar-links a:hover {
+    background-color: rgb(100, 0, 222);
+    cursor: pointer;
+  }
+
+  .mat-icon{
+    margin-right: 10px;
+    margin-bottom: -5px;
+  }
+  
+  .content-container {
+    display: flex; /* Make the content container a flex container */
+    flex-grow: 1; /* Allow content container to fill remaining space */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-left: 10px;
+  }
+
+  .orders-wrapper {
+    width: 40vw;
+    margin-top: 100px;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* Espaçamento entre os containers */
+  }
+  
+  .order-container {
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    padding: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .order-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .read-more-button {
+    background-color: rgb(146, 57, 255);
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .read-more-button:hover {
+    background-color: rgb(100, 0, 222);
+  }
+  
+  

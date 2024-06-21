@@ -1,0 +1,14 @@
+|Arrumar|
+
+4-User
+-form
+
+|Finalizado|
+1-Manga
+2-Genre
+3-Publisher
+5-Author
+6-collection
+
+|Ideias|
+1-Exclusão em cascata

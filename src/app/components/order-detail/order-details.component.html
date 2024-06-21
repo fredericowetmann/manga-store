@@ -1,0 +1,44 @@
+<!-- order-details.component.html -->
+<div class="main-container">
+    <div class="sidebar">
+      <ul class="sidebar-links">
+      </ul>
+    </div>
+    
+    <div class="content-container">
+      <button (click)="goToOrders()" class="go-back-button">Voltar</button>
+      <h2>Detalhes do Pedido</h2>
+      <div *ngIf="order">
+        <div class="info-order">
+          <p><strong>Data:</strong> {{ order.dataHora | date: 'short' }}</p>
+          <p><strong>Total:</strong> {{ order.totalOrder | currency:'BRL' }}</p>
+        </div>
+        <div class="info-payment">
+          <h2>Detalhes do Pagamento</h2>
+          <p><strong>Nome do proprietario:</strong> {{ order.payment.cardHolderName }}</p>
+          <p><strong>Numero do Cartão:</strong> {{ censurarCartao(order.payment.cardNumber) }}</p>
+          <p><strong>Total:</strong> {{ order.payment.amount | currency:'BRL' }}</p>
+        </div>
+        <div class="info-address">
+          <h2>Detalhes de Entrega</h2>
+          <p><strong>Cep:</strong> {{ formatarCEP(order.address.postalCode) }}</p>
+          <p><strong>Endereço:</strong> {{ order.address.address  }}</p>
+          <p><strong>Complemento:</strong> {{ order.address.complement }}</p>
+          <p><strong>Cidade:</strong> {{ order.address.city.name }}, {{ order.address.city.state.acronym }}</p>
+        </div>
+        <h3>Itens do Pedido</h3>
+        <div class="order-item" *ngFor="let item of order.itens">
+          <div class="order-item-details">
+            <img [src]="getImageUrl(mangas[item.idManga].imageName)" alt="{{ mangas[item.idManga].name }}">
+            <div>
+              <p><strong>Nome:</strong> {{ mangas[item.idManga].name }}</p>
+              <p><strong>Quantidade:</strong> {{ item.quantity }}</p>
+              <p><strong>Preço Unitario:</strong> {{ item.price | currency:'BRL' }}</p>
+              <p><strong>Preço Total:</strong> {{ item.quantity * item.price | currency:'BRL' }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+  

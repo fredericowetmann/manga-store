@@ -1,0 +1,20 @@
+<div class="page-container">
+    <div class="login-container">
+        <div class="login-box">
+            <img class="login-icon" src="/assets/icons/passkey.svg" alt="Passkey">
+            <h2 class="login-title">Bem-vindo</h2>
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <mat-form-field class="login-input">
+                    <input matInput placeholder="Login" formControlName="login" required>
+                    <mat-error *ngIf="loginForm.get('login')!.hasError('required')">O Email é obrigatório</mat-error>
+                </mat-form-field>
+                <mat-form-field class="login-input">
+                    <input matInput type="password" placeholder="Password" formControlName="password" required>
+                    <mat-error *ngIf="loginForm.get('password')!.hasError('required')">A Senha é obrigatória</mat-error>
+                </mat-form-field>
+                <p>Não possui uma conta? <a routerLink="/signup">Cadastre-se agora</a></p>
+                <button mat-raised-button class="login-button" color="primary" type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+</div>

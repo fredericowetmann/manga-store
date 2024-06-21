@@ -1,0 +1,38 @@
+.toolbar-title {
+  flex: 1;
+  text-align: center;
+}
+
+.flex-container {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.mat-column-id {
+  width: 5em;
+  border-right: 1px solid currentColor;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-description {
+  width: 100%;
+}
+
+.mat-column-name {
+  text-align: center;
+  min-width: 5em;
+}
+
+.mat-column-action {
+  text-align: center;
+  min-width: 10em;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 83vh;
+  background-color: white;
+}

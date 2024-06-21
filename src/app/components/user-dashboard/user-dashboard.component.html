@@ -1,0 +1,58 @@
+<div class="main-container">
+  <div class="sidebar">
+      <ul class="sidebar-links">
+          <li><a (click)="navegation('')"><mat-icon><span class="material-symbols-outlined"> person </span></mat-icon>Minha conta</a></li>
+          <li><a (click)="navegation('orders')"><mat-icon><span class="material-symbols-outlined"> list_alt </span></mat-icon>Meus pedidos</a></li>
+          <li><a (click)="navegation('update')"><mat-icon><span class="material-symbols-outlined"> edit </span></mat-icon>Alterar informações</a></li>
+          <li><a (click)="navegation('senha')"><mat-icon><span class="material-symbols-outlined"> password </span></mat-icon>Alterar senha</a></li>
+      </ul>
+  </div>
+
+  <div class="content-container">
+      <div class="profile-image-container">
+          <img [src]="user.imageName ? getImageUrl(user.id) : genericImage" alt="User Profile Picture" class="profile-image">
+      </div>
+      <div class="profile-content">
+          <div class="account-info">
+            <h2>Dados da conta</h2>
+              <div class="info-item">
+                  <label>Nome:</label>
+                  <span>{{ user.name }}</span>
+              </div>
+              <div class="info-item">
+                  <label>Email:</label>
+                  <span>{{ user.email }}</span>
+              </div>
+              <div class="info-item">
+                  <label>CPF:</label>
+                  <span>{{ formatarCPF(user.cpf) }}</span>
+              </div>
+          </div>
+          <div class="address-content">
+              <div class="account-info">
+                <h2>Endereço</h2>
+                  <div class="info-item">
+                      <label>Nome:</label>
+                      <span>{{ user.address.name }}</span>
+                  </div>
+                  <div class="info-item">
+                      <label>Cep:</label>
+                      <span>{{ formatarCEP(user.address.postalCode) }}</span>
+                  </div>
+                  <div class="info-item">
+                      <label>Endereço:</label>
+                      <span>{{ user.address.address }}</span>
+                  </div>
+                  <div class="info-item">
+                      <label>Complemento:</label>
+                      <span>{{ user.address.complement }}</span>
+                  </div>
+                  <div class="info-item">
+                      <label>Cidade:</label>
+                      <span>{{ user.address.city.name }}, {{ user.address.city.state.acronym }}</span>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
